@@ -20,15 +20,23 @@ public class  Board
     System.out.println("Phrase: " + phrase);
   }
   /* your code here - accessor(s) */
-
+  public String getSolvedPhrase() {
+    //incomplete
+  }
+  public int getLetterValue() {
+    return currentLetterValue;
+  }
   /* your code here - mutator(s)  */
-
+  public boolean solvePhrase(String phrase) {
+    //incomplete
+  }
 
   /* ---------- provided code, do not modify ---------- */
-  public void setLetterValue()
+  public int setLetterValue()
   {
     int randomInt = (int) ((Math.random() * 10) + 1) * 100;    
     currentLetterValue = randomInt;
+    return currentLetterValue;
   }
 
   public boolean isSolved(String guess)
@@ -40,7 +48,7 @@ public class  Board
     return false;
   }
 
-  private String loadPhrase()
+  public String loadPhrase()
   {
     String tempPhrase = "";
 
@@ -86,16 +94,20 @@ public class  Board
 
     return tempPhrase;
   }  
-
+  //pre condition: guess is equal or isnt equal to the hidden phrase
+  //post condition: return true/false, and set the hidden word (in underscores) to be the same thing, but with letter(s) replaced at certain indexes (if present in the word), else the original underscore filled word will be outputted
   public boolean guessLetter(String guess)
   {
+    //instantiates essential instance variables to say that the finding of a new letter is false
     boolean foundLetter = false;
     String newSolvedPhrase = "";
-
+    // for loop that iterates through the hidden phrase, character by character
     for (int i = 0; i < phrase.length(); i++)
     {
+    // if statement that checks if the guessed letter is equal to a specific letter in the hidden phrase (this checks for all occurences)
       if (phrase.substring(i, i + 1).equals(guess))
       {
+        // the hidden phrase which is initially filled with underscores will replace some of them with the occurance of the guessed letter at the right places
         newSolvedPhrase += guess + " ";
         foundLetter = true;
       }
@@ -104,6 +116,7 @@ public class  Board
         newSolvedPhrase += solvedPhrase.substring(i * 2, i * 2 + 1) + " ";  
       }
     }
+    //return true or false based on if you found a letter or not
     solvedPhrase = newSolvedPhrase;
     return foundLetter;
   } 

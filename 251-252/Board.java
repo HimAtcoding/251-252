@@ -17,18 +17,21 @@ public class  Board
     solvedPhrase = "";
     phrase = loadPhrase();
     currentLetterValue = setLetterValue();
-    System.out.println("Phrase: " + phrase);
   }
-  /* your code here - accessor(s) */
+
   public String getSolvedPhrase() {
-    //incomplete
+    return solvedPhrase;
+  }
+
+  public boolean solvePhrase(String guess) {
+    if (phrase.equals(guess)) {
+      solvedPhrase = guess;
+      return true;
+    }
+    return false;
   }
   public int getLetterValue() {
     return currentLetterValue;
-  }
-  /* your code here - mutator(s)  */
-  public boolean solvePhrase(String phrase) {
-    //incomplete
   }
 
   /* ---------- provided code, do not modify ---------- */
